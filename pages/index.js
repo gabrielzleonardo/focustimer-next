@@ -56,6 +56,7 @@ export default function Home() {
 
   const handlePlusClick = () => {
     setSeconds((s) => s + 300);
+    setDefaultSeconds((s) => s + 300);
   };
 
   const handleMinusClick = () => {
@@ -81,7 +82,7 @@ export default function Home() {
       <div className="w-[100vw] h-[100vh] flex justify-center items-center dark:bg-[#121214]">
         <button onClick={() => setTheme(theme === "light" ? "dark" : "light")}>
           <Image
-            src={`/images/${theme}.svg`}
+            src={`/images/${theme === "dark" ? "dark" : "light"}.svg`}
             width={44}
             height={44}
             alt="imagem"
@@ -102,7 +103,15 @@ export default function Home() {
                 }}
               >
                 <Image
-                  src={interval.active ? pauseButton : playButton}
+                  src={
+                    interval.active
+                      ? `/images/control-icons/pause${
+                          theme === "dark" ? "dark" : ""
+                        }.svg`
+                      : `/images/control-icons/play${
+                          theme === "dark" ? "dark" : ""
+                        }.svg`
+                  }
                   width={48}
                   height={48}
                   alt="Start the timer"
@@ -115,7 +124,9 @@ export default function Home() {
                 }}
               >
                 <Image
-                  src={stopButton}
+                  src={`/images/control-icons/stop${
+                    theme === "dark" ? "dark" : ""
+                  }.svg`}
                   width={48}
                   height={48}
                   alt="Stop the timer"
@@ -123,7 +134,9 @@ export default function Home() {
               </button>
               <button onClick={() => handlePlusClick()}>
                 <Image
-                  src={plusButton}
+                  src={`/images/control-icons/+${
+                    theme === "dark" ? "dark" : ""
+                  }.svg`}
                   width={48}
                   height={48}
                   alt="Increase 5 minutes from the timer"
@@ -132,7 +145,9 @@ export default function Home() {
               <button onClick={() => handleMinusClick()}>
                 <Image
                   className=""
-                  src={MinusButton}
+                  src={`/images/control-icons/-${
+                    theme === "dark" ? "dark" : ""
+                  }.svg`}
                   width={48}
                   height={48}
                   alt="Decrease 5 minutes from the timer"
