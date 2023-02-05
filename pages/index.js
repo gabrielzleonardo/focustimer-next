@@ -5,11 +5,7 @@ import Card from "../components/Card";
 
 import Head from "next/head";
 import Image from "next/image";
-import MinusButton from "/public/images/control-icons/-.svg";
-import plusButton from "/public/images/control-icons/+.svg";
-import playButton from "/public/images/control-icons/play.svg";
-import pauseButton from "/public/images/control-icons/pause.svg";
-import stopButton from "/public/images/control-icons/stop.svg";
+
 
 export default function Home() {
   const { theme, setTheme } = useTheme();
@@ -159,10 +155,11 @@ export default function Home() {
           <div className="grid grid-cols-2 gap-[32px]">
             {cards.map((card) => (
               <Card
+              cardActive={cardActive}
                 key={card}
+                card={card}
                 activeCard={(v) => {
                   handleCardClick(v);
-                  console.log(card);
                 }}
               />
             ))}

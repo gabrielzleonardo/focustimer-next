@@ -9,6 +9,7 @@ module.exports = {
     // Or if using `src` directory:
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
+  safelist: ["bg-forest", "bg-rain", "bg-coffee", "bg-fireplace", "bg-forestActive", "bg-rainActive", "bg-coffeeActive", "bg-fireplaceActive"],
   theme: {
     fontFamily: {
       roboto: ["Roboto", "sans-serif"],
