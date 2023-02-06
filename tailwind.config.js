@@ -9,12 +9,24 @@ module.exports = {
     // Or if using `src` directory:
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
-  safelist: ["bg-forest", "bg-rain", "bg-coffee", "bg-fireplace", "bg-forestActive", "bg-rainActive", "bg-coffeeActive", "bg-fireplaceActive"],
+  safelist: [
+    "bg-forest",
+    "bg-rain",
+    "bg-coffee",
+    "bg-fireplace",
+    "bg-forestActive",
+    "bg-rainActive",
+    "bg-coffeeActive",
+    "bg-fireplaceActive",
+  ],
   theme: {
     fontFamily: {
       roboto: ["Roboto", "sans-serif"],
     },
     extend: {
+      animation: {
+        "spin-slow": "spin 3s linear infinite",
+      },
       backgroundImage: {
         forest: "url('/images/card-icons/forest.svg')",
         rain: "url('/images/card-icons/rain.svg')",

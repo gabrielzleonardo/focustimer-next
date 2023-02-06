@@ -6,9 +6,20 @@ import Card from "../components/Card";
 import Head from "next/head";
 import Image from "next/image";
 
-
 export default function Home() {
+  const [volume, setVolume] = useState(0.5);
+
+  const handleVolumeChange = (e) => {
+    const audio = document.querySelector("audio");
+    setVolume(e.target.value);
+    audio.volume = volume;
+  };
+
   const { theme, setTheme } = useTheme();
+
+  useEffect(() => {
+    setTheme("light");
+  }, []);
 
   const cards = ["forest", "rain", "coffee", "fireplace"];
 
@@ -75,17 +86,17 @@ export default function Home() {
         <link rel="icon" type="image/svg" href="/images/favicon.svg" />
       </Head>
 
-      <div className="w-[100vw] h-[100vh] flex justify-center items-center dark:bg-[#121214]">
+      <div className="w-[100vw] h-[100vh] flex justify-center items-center px-[30px] dark:bg-[#121214]">
         <button onClick={() => setTheme(theme === "light" ? "dark" : "light")}>
           <Image
             src={`/images/${theme === "dark" ? "dark" : "light"}.svg`}
             width={44}
             height={44}
             alt="imagem"
-            className="fixed top-[60px] right-[60px]"
+            className="fixed top-[10px] right-[10px] sm:top-[20px] sm:right-[20px] hover:animate-spin-slow"
           />
         </button>
-        <main className="flex items-center max-w-[820px] w-full justify-between">
+        <main className="flex flex-col pt-[50px] md:pt-0 md:flex-row items-center max-w-[820px] w-full justify-between gap-[50px] ">
           <div>
             <div className="font-roboto flex items-center justify-center text-[126px] text-[#323238] font-[500] w-[321px] dark:text-white">
               <div>{minutes}</div>
@@ -155,12 +166,11 @@ export default function Home() {
           <div className="grid grid-cols-2 gap-[32px]">
             {cards.map((card) => (
               <Card
-              cardActive={cardActive}
+                cardActive={cardActive}
                 key={card}
                 card={card}
-                activeCard={(v) => {
-                  handleCardClick(v);
-                }}
+                activeCard={(v) => handleCardClick(v)}
+                changeCurrentVolume={(e) => handleVolumeChange(e)}
               />
             ))}
           </div>
@@ -171,6 +181,7 @@ export default function Home() {
             src={`/audios/${cardActive}.wav`}
             loop={true}
             autoPlay={true}
+            volume={volume}
           />
         )}
       </div>
