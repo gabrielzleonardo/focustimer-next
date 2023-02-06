@@ -8,19 +8,10 @@ import Image from "next/image";
 
 export default function Home() {
   const [volume, setVolume] = useState(0.5);
-
-  const handleVolumeChange = (e) => {
-    const audio = document.querySelector("audio");
-    setVolume(e.target.value);
-    audio.volume = volume;
-  };
-
   const { theme, setTheme } = useTheme();
-
   useEffect(() => {
     setTheme("light");
   }, []);
-
   const cards = ["forest", "rain", "coffee", "fireplace"];
 
   //variáveis de estado
@@ -40,6 +31,12 @@ export default function Home() {
   function handleCardClick(card) {
     setCardActive(cardActive === card ? "" : card);
   }
+
+  const handleVolumeChange = (e) => {
+    const audio = document.querySelector("audio");
+    setVolume(e.target.value);
+    audio.volume = volume;
+  };
 
   //função para o timer
 
@@ -151,7 +148,6 @@ export default function Home() {
               </button>
               <button onClick={() => handleMinusClick()}>
                 <Image
-                  className=""
                   src={`/images/control-icons/-${
                     theme === "dark" ? "dark" : ""
                   }.svg`}
@@ -166,9 +162,9 @@ export default function Home() {
           <div className="grid grid-cols-2 gap-[32px]">
             {cards.map((card) => (
               <Card
-                cardActive={cardActive}
                 key={card}
                 card={card}
+                cardActive={cardActive}
                 activeCard={(v) => handleCardClick(v)}
                 changeCurrentVolume={(e) => handleVolumeChange(e)}
               />
@@ -181,7 +177,6 @@ export default function Home() {
             src={`/audios/${cardActive}.wav`}
             loop={true}
             autoPlay={true}
-            volume={volume}
           />
         )}
       </div>
