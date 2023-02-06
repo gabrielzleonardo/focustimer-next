@@ -1,5 +1,5 @@
 
-#  FocusTimer em NExt
+#  FocusTimer em Next
 Esse projeto um desafio proposto no curso Explorer da [RocketSeat](https://app.rocketseat.com.br/), mas eu decidi fazê-lo em NextJS para aprender mais sobre este framework. A aplicação consiste em um timer para aplicar o [método de Pomodoro](https://brasilescola.uol.com.br/dicas-de-estudo/tecnica-pomodoro-que-e-e-como-funciona.htm). Além disso, ela possui dark theme, mais alguns sons para auxiliar na concentração e um seletor de volume para eles.
 
 
